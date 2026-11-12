@@ -42,7 +42,7 @@
       </div>
       <div class="form-actions">
         <button type="submit" onclick="document.getElementById('editor').classList.add('hide')">Add experience</button>
-        <button id="cancel-edit" class="secondary" type="button" hidden>Cancel edit</button>
+        <button id="cancel-edit" class="secondary" type="button" hidden  onclick="document.getElementById('editor').classList.add('hide')">Cancel edit</button>
       </div>
       <p id="form-status" role="status" aria-live="polite"></p>
     </form>
@@ -70,7 +70,7 @@
       <p class="activityType"></p>
       <p class="desc"></p>
       <div class="item-actions">
-        <button class="edit-item secondary" type="button">Edit</button>
+        <button class="edit-item secondary" type="button" onclick="document.getElementById('editor').classList.remove('hide')">Edit</button>
         <button class="delete-item secondary" type="button">Delete</button>
       </div>
     </article>
