@@ -78,10 +78,13 @@ async function loadItems() {
       node.querySelector('.desc').textContent = item.desc;
       const editButton = node.querySelector('.edit-item');
       const deleteButton = node.querySelector('.delete-item');
+      const addButton = node.querySelector('.addToCal');
       editButton.setAttribute('aria-label', `Edit ${item.activityName}: ${item.activityType}`);
       deleteButton.setAttribute('aria-label', `Delete ${item.activityName}: ${item.activityType}`);
+      addButton.setAttribute('aria-label', `Add ${item.activityName}: ${item.activityType}`);
       editButton.disabled = busy;
       deleteButton.disabled = busy;
+      addButtonButton.disabled = busy;
       editButton.addEventListener('click', () => editItem(item));
       deleteButton.addEventListener('click', () => deleteItem(item, deleteButton.closest('article')));
       fragment.append(node);
