@@ -1,11 +1,8 @@
-:root { font-family: system-ui, sans-serif; color: #1d2935; background: #eef2f4; line-height: 1.5; }
 * { box-sizing: border-box; }
-body { margin: 0; }
 .layout { max-width: 760px; margin: 3rem auto; padding: 0 1rem; display: grid; gap: 1.5rem; }
 .panel, .resume { background: white; border: 1px solid #d9e1e5; border-radius: 10px; padding: clamp(1.25rem, 5vw, 2.5rem); box-shadow: 0 4px 16px #1d29350a; }
 h1, h2, h3, p { margin-top: 0; }
 h1, h2 { line-height: 1.2; margin-bottom: .5rem; }
-.eyebrow { color: #176050; font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .field { display: flex; flex-direction: column; margin-bottom: 1rem; }
 label { font-weight: 650; margin-bottom: .3rem; }
 .optional { font-weight: 400; color: #52636e; }
@@ -26,7 +23,4 @@ button.secondary { background: white; color: #176050; border: 1px solid #176050;
 .experience { border-bottom: 1px solid #d9e1e5; padding-bottom: 1rem; margin-bottom: 1rem; }
 .experience-heading { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .experience h3, .experience .dates { margin-bottom: .25rem; }
-.dates, .employer { color: #52636e; }
-.accomplishment { white-space: pre-wrap; overflow-wrap: anywhere; }
-.resume-footer { color: #52636e; font-size: .875rem; margin-top: 2rem; }
 @media (max-width: 450px) { .years { grid-template-columns: 1fr; gap: 0; } }
