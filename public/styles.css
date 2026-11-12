@@ -24,3 +24,70 @@ button.secondary { background: white; color: #176050; border: 1px solid #176050;
 .experience-heading { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
 .experience h3, .experience .dates { margin-bottom: .25rem; }
 @media (max-width: 450px) { .years { grid-template-columns: 1fr; gap: 0; } }
+
+/* my code */
+html{
+    font-size: 10px;
+    font-family: "Momo Trust Display", sans-serif;
+}
+body{
+    font-size: 1.6rem;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    margin: 0;
+}
+main{
+    grid-column: span 10;
+    text-align: center;
+    background: forestgreen;
+    min-height: 100vh;
+    padding-bottom: 3em;
+}
+#calendar{
+    width: 80%;
+    margin-left: 8.3vw;
+    border: 1px solid;
+    border-spacing: 0;
+    border-radius: 1em;
+    overflow: hidden;
+    background: white;
+}
+td{
+    border: 1px solid grey;
+    text-align: left;
+}
+.content{
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+}
+.today{
+    background: lightblue;
+}
+.otherMonth{
+    color: grey;
+    background: lightgrey;
+}
+
+input, select, button{
+    font-family: "Momo Trust Display", sans-serif;
+}
+
+#tasklist{
+    grid-column: span 2;
+    padding: 0.8rem;
+}
+
+#editor, #view{
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    padding: 0.8rem;
+    border-radius: 1.6rem;
+    background: white;
+    transition: all 0.2s;
+}
+.hide{
+    top: 100vh !important;
+    height: 0 !important;
+}
