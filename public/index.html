@@ -3,52 +3,67 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Resume builder demo</title>
+  <title>Calendar</title>
   <link rel="stylesheet" href="/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap" rel="stylesheet">
   <script type="module" src="/app.js"></script>
 </head>
 <body>
-  <main class="layout">
-    <section class="panel" aria-labelledby="form-heading">
-      <h1 id="form-heading">Build a resume</h1>
-      <p>Add a fictional work experience. Entries are public and shared with everyone using this demo.</p>
-      <form id="resume-form" novalidate>
-        <div class="field">
-          <label for="activityName">Activity</label>
-          <input id="activityName" name="activityName" type="text" required maxlength="100" aria-describedby="activityName-error">
-          <span class="error" id="activityName-error"></span>
-        </div>
-        <div class="field">
-          <label for="activityType">Type</label>
-          <input id="activityType" name="activityType" type="text" required maxlength="100" aria-describedby="activityType-error">
-          <span class="error" id="activityType-error"></span>
-        </div>
-        <div class="field">
-          <label for="energy">Energy</label>
-          <input id="energy" name="energy" type="number" required min="1" max="3" step="1" placeholder="1" aria-describedby="energy-error">
-          <span class="error" id="energy-error"></span>
-        </div>
-        <div class="field">
-          <label for="desc">Description</label>
-          <textarea id="desc" name="desc" rows="4" required maxlength="1000" aria-describedby="desc-error"></textarea>
-          <span class="error" id="desc-error"></span>
-        </div>
-        <div class="form-actions">
-          <button type="submit">Add experience</button>
-          <button id="cancel-edit" class="secondary" type="button" hidden>Cancel edit</button>
-        </div>
-        <p id="form-status" role="status" aria-live="polite"></p>
-      </form>
-    </section>
-    <section class="resume" aria-labelledby="resume-heading">
-      <header class="resume-header">
-        <h2 id="resume-heading">Your Activities</h2>
-        <p>Professional experience</p>
-      </header>
-      <div id="resume-status" role="status" aria-live="polite">Loading experiences…</div>
-      <div id="resume-items"></div>
-    </section>
+  <main>
+    <h1 id="month">month</h1>
+    <table id="calendar">
+    </table>
   </main>
+
+  <section id="editor" class="hide" aria-labelledby="form-heading">
+    <h1 id="form-heading">Add Activities</h1>
+    <form id="resume-form" novalidate>
+      <div class="field">
+        <label for="activityName">Activity</label>
+        <input id="activityName" name="activityName" type="text" required maxlength="100" aria-describedby="activityName-error">
+        <span class="error" id="activityName-error"></span>
+      </div>
+      <div class="field">
+        <label for="activityType">Type</label>
+        <input id="activityType" name="activityType" type="text" required maxlength="100" aria-describedby="activityType-error">
+        <span class="error" id="activityType-error"></span>
+      </div>
+      <div class="field">
+        <label for="energy">Energy</label>
+        <input id="energy" name="energy" type="number" required min="1" max="3" step="1" placeholder="1" aria-describedby="energy-error">
+        <span class="error" id="energy-error"></span>
+      </div>
+      <div class="field">
+        <label for="desc">Description</label>
+        <textarea id="desc" name="desc" rows="4" maxlength="1000" aria-describedby="desc-error"></textarea>
+        <span class="error" id="desc-error"></span>
+      </div>
+      <div class="form-actions">
+        <button type="submit" onclick="document.getElementById('editor').classList.add('hide')">Add experience</button>
+        <button id="cancel-edit" class="secondary" type="button" hidden>Cancel edit</button>
+      </div>
+      <p id="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <section id="tasklist" class="resume" aria-labelledby="resume-heading">
+    <header class="resume-header">
+      <h2 id="resume-heading">Your Activities</h2>
+      <p>Professional experience</p>
+    </header>
+    <div id="resume-status" role="status" aria-live="polite">Loading experiences…</div>
+    <div id="resume-items"></div>
+    <button onclick="document.getElementById('editor').classList.remove('hide')">Add Activity</button>
+  </section>
+
+  <div id="view" class="hide">
+    <h2 id="date"></h2>
+    <p>You have no activities this day. Add activities from your activity list.</p>
+    <button onclick="document.getElementById('view').classList.add('hide')">Back</button>
+  </div>
+
   <template id="resume-item-template">
     <article class="experience">
       <div class="experience-heading"><h3 class="activityName"></h3><p class="energy"></p></div>
@@ -60,5 +75,8 @@
       </div>
     </article>
   </template>
+
+  <script src="setup.js"></script>
+  <script src="detials.js"></script>
 </body>
 </html>
