@@ -44,7 +44,6 @@
         <button type="submit" onclick="document.getElementById('editor').classList.add('hide')">Add experience</button>
         <button id="cancel-edit" class="secondary" type="button" hidden  onclick="document.getElementById('editor').classList.add('hide')">Cancel edit</button>
       </div>
-      <p id="form-status" role="status" aria-live="polite"></p>
     </form>
   </section>
 
@@ -55,6 +54,7 @@
     <div id="resume-status" role="status" aria-live="polite">Loading Activities…</div>
     <div id="resume-items"></div>
     <button onclick="document.getElementById('editor').classList.remove('hide')">Add Activity</button>
+    <p id="form-status" role="status" aria-live="polite"></p>
   </section>
 
   <div id="view" class="hide">
