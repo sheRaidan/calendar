@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resume builder demo</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <main class="layout">
+    <section class="panel" aria-labelledby="form-heading">
+      <p class="eyebrow">Resume builder demo</p>
+      <h1 id="form-heading">Build a resume</h1>
+      <p>Add a fictional work experience. Entries are public and shared with everyone using this demo.</p>
+      <form id="resume-form" novalidate>
+        <div class="field">
+          <label for="job-title">Job title</label>
+          <input id="job-title" name="job_title" type="text" required maxlength="100" aria-describedby="job-title-error">
+          <span class="error" id="job-title-error"></span>
+        </div>
+        <div class="field">
+          <label for="employer">Employer</label>
+          <input id="employer" name="employer" type="text" required maxlength="100" aria-describedby="employer-error">
+          <span class="error" id="employer-error"></span>
+        </div>
+        <div class="years">
+          <div class="field">
+            <label for="start-year">Start year</label>
+            <input id="start-year" name="start_year" type="number" required min="1900" max="2100" step="1" placeholder="2020" aria-describedby="start-year-error">
+            <span class="error" id="start-year-error"></span>
+          </div>
+          <div class="field">
+            <label for="end-year">End year <span class="optional">(optional)</span></label>
+            <input id="end-year" name="end_year" type="number" min="1900" max="2100" step="1" placeholder="Present" aria-describedby="end-year-error">
+            <span class="error" id="end-year-error"></span>
+          </div>
+        </div>
+        <div class="field">
+          <label for="accomplishment">Accomplishment</label>
+          <textarea id="accomplishment" name="accomplishment" rows="4" required maxlength="1000" aria-describedby="accomplishment-error"></textarea>
+          <span class="error" id="accomplishment-error"></span>
+        </div>
+        <div class="form-actions">
+          <button type="submit">Add experience</button>
+          <button id="cancel-edit" class="secondary" type="button" hidden>Cancel edit</button>
+        </div>
+        <p id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+    <section class="resume" aria-labelledby="resume-heading">
+      <header class="resume-header">
+        <p class="eyebrow">A shared example</p>
+        <h2 id="resume-heading">Your Name</h2>
+        <p>Professional experience</p>
+      </header>
+      <div id="resume-status" role="status" aria-live="polite">Loading experiences…</div>
+      <div id="resume-items"></div>
+      <footer class="resume-footer">Built with fictional data for a learning demo.</footer>
+    </section>
+  </main>
+  <template id="resume-item-template">
+    <article class="experience">
+      <div class="experience-heading"><h3 class="job-title"></h3><p class="dates"></p></div>
+      <p class="employer"></p>
+      <p class="accomplishment"></p>
+      <div class="item-actions">
+        <button class="edit-item secondary" type="button">Edit</button>
+        <button class="delete-item secondary" type="button">Delete</button>
+      </div>
+    </article>
+  </template>
+</body>
+</html>
