@@ -72,14 +72,14 @@ async function loadItems() {
     for (const item of items) {
       const node = template.content.cloneNode(true);
       node.querySelector('article').dataset.itemId = item._id;
-      node.querySelector('.job-title').textContent = item.job_title;
-      node.querySelector('.employer').textContent = item.employer;
-      node.querySelector('.dates').textContent = `${item.start_year} – ${item.end_year ?? 'Present'}`;
-      node.querySelector('.accomplishment').textContent = item.accomplishment;
+      node.querySelector('.activityName').textContent = item.activityName;
+      node.querySelector('.activityType').textContent = item.activityType;
+      node.querySelector('.energy').textContent = item.energy;
+      node.querySelector('.desc').textContent = item.desc;
       const editButton = node.querySelector('.edit-item');
       const deleteButton = node.querySelector('.delete-item');
-      editButton.setAttribute('aria-label', `Edit ${item.job_title} at ${item.employer}`);
-      deleteButton.setAttribute('aria-label', `Delete ${item.job_title} at ${item.employer}`);
+      editButton.setAttribute('aria-label', `Edit ${item.activityName}: ${item.activityType}`);
+      deleteButton.setAttribute('aria-label', `Delete ${item.activityName}: ${item.activityType}`);
       editButton.disabled = busy;
       deleteButton.disabled = busy;
       editButton.addEventListener('click', () => editItem(item));
@@ -96,7 +96,7 @@ async function loadItems() {
 }
 
 async function deleteItem(item, article) {
-  if (busy || !confirm(`Delete ${item.job_title} at ${item.employer}?`)) return;
+  if (busy || !confirm(`Delete ${item.activityName}: ${item.activityType}?`)) return;
   setBusy(true);
   resumeStatus.textContent = 'Deleting experience…';
   try {
@@ -132,7 +132,7 @@ form.addEventListener('submit', async (event) => {
   }
 
   const data = Object.fromEntries(new FormData(form));
-  if (!data.end_year) delete data.end_year;
+  // if (!data.end_year) delete data.end_year;
   const isEditing = editingId !== null;
   const url = isEditing ? `/api/resume-item?id=${encodeURIComponent(editingId)}` : '/api/resume-item';
   setBusy(true);
