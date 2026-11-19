@@ -107,7 +107,8 @@ async function loadItems() {
     resumeStatus.textContent = items.length ? '' : 'No activities yet';
     dateStatusStatus.textContent = items.length ? '' : 'No activities yet. Add activites to your list and they will appear here';
     return true;
-  } catch {
+  } catch (error){
+    console.log(error)
     resumeStatus.textContent = 'Unable to load activities. Please refresh the page to try again.';
     return false;
   }
