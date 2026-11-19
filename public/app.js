@@ -98,7 +98,7 @@ async function loadItems() {
       viewNode.querySelector('.activityName').textContent = item.activityName;
       viewNode.querySelector('.activityType').textContent = item.activityType;
       viewNode.querySelector('.energy').textContent = item.energy;
-      const addButton = viewNodeode.querySelector('.addToCal');
+      const addButton = viewNode.querySelector('.addToCal');
       addButton.setAttribute('aria-label', `Add ${item.activityName}: ${item.activityType}`);
       addButton.disabled = busy;
       fragment.append(viewNode);
