@@ -3,6 +3,8 @@ const formStatus = document.querySelector('#form-status');
 const resumeStatus = document.querySelector('#resume-status');
 const resumeItems = document.querySelector('#resume-items');
 const template = document.querySelector('#resume-item-template');
+const tasks = document.querySelector('#tasklistHolder');
+const taskTemplate = document.querySelector('#task-template');
 const submitButton = form.querySelector('button[type="submit"]');
 const cancelEditButton = document.querySelector('#cancel-edit');
 const fields = [...form.querySelectorAll('input, textarea')];
@@ -88,6 +90,16 @@ async function loadItems() {
       editButton.addEventListener('click', () => editItem(item));
       deleteButton.addEventListener('click', () => deleteItem(item, deleteButton.closest('article')));
       fragment.append(node);
+
+      const viewNode = taskTemplate.content.cloneNode(true);
+      viewNode.querySelector('article').dataset.itemId = item._id;
+      viewNode.querySelector('.activityName').textContent = item.activityName;
+      viewNode.querySelector('.activityType').textContent = item.activityType;
+      viewNode.querySelector('.energy').textContent = item.energy;
+      const addButtonView = viewNodeode.querySelector('.addToCal');
+      addButtonView.setAttribute('aria-label', `Add ${item.activityName}: ${item.activityType}`);
+      addButtonButtonView.disabled = busy;
+      fragment.append(viewNodeode);
     }
     resumeItems.replaceChildren(fragment);
     resumeStatus.textContent = items.length ? '' : 'No activities yet';
