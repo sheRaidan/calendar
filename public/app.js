@@ -99,7 +99,7 @@ async function loadItems() {
       const addButtonView = viewNodeode.querySelector('.addToCal');
       addButtonView.setAttribute('aria-label', `Add ${item.activityName}: ${item.activityType}`);
       addButtonButtonView.disabled = busy;
-      fragment.append(viewNodeode);
+      fragment.append(viewNode);
     }
     resumeItems.replaceChildren(fragment);
     resumeStatus.textContent = items.length ? '' : 'No activities yet';
