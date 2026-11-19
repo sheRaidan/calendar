@@ -78,17 +78,17 @@ async function loadItems() {
       node.querySelector('article').dataset.itemId = item._id;
       node.querySelector('.activityName').textContent = item.activityName;
       node.querySelector('.activityType').textContent = item.activityType;
-      node.querySelector('.energy').textContent = item.energy;
-      node.querySelector('.desc').textContent = item.desc;
+      // node.querySelector('.energy').textContent = item.energy;
+      // node.querySelector('.desc').textContent = item.desc;
       const editButton = node.querySelector('.edit-item');
       const deleteButton = node.querySelector('.delete-item');
-      const addButton = node.querySelector('.addToCal');
+      // const addButton = node.querySelector('.addToCal');
       editButton.setAttribute('aria-label', `Edit ${item.activityName}: ${item.activityType}`);
       deleteButton.setAttribute('aria-label', `Delete ${item.activityName}: ${item.activityType}`);
-      addButton.setAttribute('aria-label', `Add ${item.activityName}: ${item.activityType}`);
+      // addButton.setAttribute('aria-label', `Add ${item.activityName}: ${item.activityType}`);
       editButton.disabled = busy;
       deleteButton.disabled = busy;
-      addButtonButton.disabled = busy;
+      // addButton.disabled = busy;
       editButton.addEventListener('click', () => editItem(item));
       deleteButton.addEventListener('click', () => deleteItem(item, deleteButton.closest('article')));
       fragment.append(node);
@@ -98,16 +98,17 @@ async function loadItems() {
       viewNode.querySelector('.activityName').textContent = item.activityName;
       viewNode.querySelector('.activityType').textContent = item.activityType;
       viewNode.querySelector('.energy').textContent = item.energy;
-      const addButtonView = viewNodeode.querySelector('.addToCal');
-      addButtonView.setAttribute('aria-label', `Add ${item.activityName}: ${item.activityType}`);
-      addButtonButtonView.disabled = busy;
+      const addButton = viewNodeode.querySelector('.addToCal');
+      addButton.setAttribute('aria-label', `Add ${item.activityName}: ${item.activityType}`);
+      addButton.disabled = busy;
       fragment.append(viewNode);
     }
     resumeItems.replaceChildren(fragment);
     resumeStatus.textContent = items.length ? '' : 'No activities yet';
     dateStatusStatus.textContent = items.length ? '' : 'No activities yet. Add activites to your list and they will appear here';
     return true;
-  } catch {
+  } catch (error){
+    console.log(error);
     resumeStatus.textContent = 'Unable to load activities. Please refresh the page to try again.';
     return false;
   }
