@@ -3,6 +3,7 @@ const formStatus = document.querySelector('#form-status');
 const resumeStatus = document.querySelector('#resume-status');
 const resumeItems = document.querySelector('#resume-items');
 const template = document.querySelector('#resume-item-template');
+const dateStatus = document.querySelector('#date-status');
 const tasks = document.querySelector('#tasklistHolder');
 const taskTemplate = document.querySelector('#task-template');
 const submitButton = form.querySelector('button[type="submit"]');
@@ -66,6 +67,7 @@ for (const field of fields) {
 
 async function loadItems() {
   resumeStatus.textContent = 'Loading Activities…';
+  dateStatus.textContent = 'Loading Activities…';
   try {
     const response = await fetch('/api/resume-items');
     if (!response.ok) throw new Error('Unable to load activities. Please try again later.');
@@ -103,6 +105,7 @@ async function loadItems() {
     }
     resumeItems.replaceChildren(fragment);
     resumeStatus.textContent = items.length ? '' : 'No activities yet';
+    dateStatusStatus.textContent = items.length ? '' : 'No activities yet. Add activites to your list and they will appear here';
     return true;
   } catch {
     resumeStatus.textContent = 'Unable to load activities. Please refresh the page to try again.';
