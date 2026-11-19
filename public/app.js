@@ -73,6 +73,7 @@ async function loadItems() {
     if (!response.ok) throw new Error('Unable to load activities. Please try again later.');
     const items = await response.json();
     const fragment = document.createDocumentFragment();
+    const viewerFragment = document.createDocumentFragment();
     for (const item of items) {
       const node = template.content.cloneNode(true);
       node.querySelector('article').dataset.itemId = item._id;
@@ -101,9 +102,10 @@ async function loadItems() {
       const addButton = viewNode.querySelector('.addToCal');
       addButton.setAttribute('aria-label', `Add ${item.activityName}: ${item.activityType}`);
       addButton.disabled = busy;
-      fragment.append(viewNode);
+      viewerFragment.append(viewNode);
     }
     resumeItems.replaceChildren(fragment);
+    tasks.replaceChildren(viewerFragment);
     resumeStatus.textContent = items.length ? '' : 'No activities yet';
     dateStatusStatus.textContent = items.length ? '' : 'No activities yet. Add activites to your list and they will appear here';
     return true;
